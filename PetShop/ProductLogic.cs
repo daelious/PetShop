@@ -8,7 +8,7 @@
 
         public ProductLogic() 
         {
-            //_products = new List<Product>();
+            _products = new List<Product>();
             _dogLeashes = new Dictionary<string, DogLeash>();
             _catFoods = new Dictionary<string, CatFood>();
         }
@@ -25,6 +25,8 @@
                 {
                     _catFoods.Add(product.Name, product as CatFood);
                 }
+
+                _products.Add(product);
             }
             catch (Exception ex)
             {
