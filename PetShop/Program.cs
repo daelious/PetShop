@@ -6,6 +6,8 @@ namespace PetShop
     {
         static void Main(string[] args)
         {
+            var productLogic = new ProductLogic();
+
             Console.WriteLine("Press 1 to add a product");
             Console.WriteLine("Type 'exit' to quit");
             string userInput = Console.ReadLine();
@@ -24,7 +26,10 @@ namespace PetShop
                         WeightPounds = 24.00
                     };
 
-                    Console.WriteLine(JsonSerializer.Serialize(catFood));
+                    productLogic.AddProduct(catFood);
+                } else if (userInput.ToLower() == "2")
+                {
+                    productLogic.GetCatFoodByName("Yummy Kitty Cat Food");
                 }
 
                 Console.WriteLine("Press 1 to add a product");
