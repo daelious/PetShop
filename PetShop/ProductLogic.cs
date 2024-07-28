@@ -8,24 +8,28 @@
 
         public ProductLogic() 
         {
-            _products = new List<Product>();
+            //_products = new List<Product>();
             _dogLeashes = new Dictionary<string, DogLeash>();
             _catFoods = new Dictionary<string, CatFood>();
         }
 
         public void AddProduct(Product product)
         {
-            if (product is DogLeash)
+            try
             {
-                _dogLeashes.Add(product.Name, product as DogLeash);
+                if (product is DogLeash)
+                {
+                    _dogLeashes.Add(product.Name, product as DogLeash);
+                }
+                else if (product is CatFood)
+                {
+                    _catFoods.Add(product.Name, product as CatFood);
+                }
             }
-
-            if (product is CatFood)
+            catch (Exception ex)
             {
-                _catFoods.Add(product.Name, product as CatFood);
+                Console.WriteLine(ex.ToString());
             }
-
-            _products.Add(product);
         }
 
         public List<Product> GetAllProducts()
